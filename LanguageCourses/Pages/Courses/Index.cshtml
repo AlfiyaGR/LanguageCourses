@@ -1,0 +1,104 @@
+﻿@page
+@model LanguageCourses.Pages.Courses.IndexModel
+
+@{
+    ViewData["Title"] = "Курсы";
+}
+
+<h1>Курсы</h1>
+
+<p>
+    <a asp-page="Create">Добавить курс</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Найти по названию, теме, уровне подготовки или языку:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Поиск" class="btn btn-primary" /> |
+            <a asp-page="./Index">Вернуться к полному списку</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                 <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Courses[0].Title)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Theme)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.PriceSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Courses[0].Price)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].TrainingLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Time)
+            </th>
+            <th>
+                Язык
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Courses) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Theme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainingLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language.Title)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CourseID">Редактировать</a> |
+                <a asp-page="./Details" asp-route-id="@item.CourseID">Детали</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CourseID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.Courses.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Courses.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Courses.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Предыдущая
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Courses.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Следующая
+</a>

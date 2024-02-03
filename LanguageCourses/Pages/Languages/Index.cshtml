@@ -2,22 +2,22 @@
 @model LanguageCourses.Pages.Languages.IndexModel
 
 @{
-    ViewData["Title"] = "Languages";
+    ViewData["Title"] = "Языки";
 }
 
-<h1>Languages</h1>
+<h1>Языки</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Добавить язык</a>
 </p>
 
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Find by title or complexity:
+            Найти по названию или сложности:
             <input type="text" name="SearchString" value="@Model.CurrentFilter"/>
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full list</a>
+            <input type="submit" value="Поиск" class="btn btn-primary" /> |
+            <a asp-page="./Index">Вернуться к полному списку</a>
         </p>
     </div>
 </form>
@@ -51,9 +51,9 @@
                     @Html.DisplayFor(modelItem => item.Complexity)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.LanguageID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.LanguageID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.LanguageID">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.LanguageID">Редактировать</a> |
+                    <a asp-page="./Details" asp-route-id="@item.LanguageID">Детали</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.LanguageID">Удалить</a>
                 </td>
             </tr>
         }
@@ -70,12 +70,12 @@
    asp-route-pageIndex="@(Model.Languages.PageIndex - 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
    class="btn btn-primary @prevDisabled">
-    Previous
+    Предыдущая
 </a>
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.Languages.PageIndex + 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
    class="btn btn-primary @nextDisabled">
-    Next
+    Следующая
 </a>

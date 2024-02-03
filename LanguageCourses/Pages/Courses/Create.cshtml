@@ -1,0 +1,62 @@
+﻿@page
+@model LanguageCourses.Pages.Courses.CreateModel
+
+@{
+    ViewData["Title"] = "Добавить";
+}
+
+<h1>Создать</h1>
+
+<h4>Курс</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Course.Title" class="control-label"></label>
+                <input asp-for="Course.Title" class="form-control" />
+                <span asp-validation-for="Course.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Course.Theme" class="control-label"></label>
+                <input asp-for="Course.Theme" class="form-control" />
+                <span asp-validation-for="Course.Theme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Course.Price" class="control-label"></label>
+                <input asp-for="Course.Price" class="form-control" />
+                <span asp-validation-for="Course.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Course.TrainingLevel" class="control-label"></label>
+                <input asp-for="Course.TrainingLevel" class="form-control" />
+                <span asp-validation-for="Course.TrainingLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Course.Time" class="control-label"></label>
+                <input asp-for="Course.Time" class="form-control" />
+                <span asp-validation-for="Course.Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Course.Language" class="control-label">Язык</label>
+                <select asp-for="Course.LanguageID" class="form-control"
+                        asp-items="@Model.LanguageTitleSL">
+                    <option value="">-- Выбрать язык --</option>
+                </select>
+                <span asp-validation-for="Course.LanguageID" class="text-danger" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

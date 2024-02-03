@@ -13,9 +13,9 @@ namespace LanguageCourses.Pages.Languages
 {
     public class EditModel : PageModel
     {
-        private readonly LanguageCourses.Data.LanguageContext _context;
+        private readonly LanguageContext _context;
 
-        public EditModel(LanguageCourses.Data.LanguageContext context)
+        public EditModel(LanguageContext context)
         {
             _context = context;
         }
@@ -62,10 +62,5 @@ namespace LanguageCourses.Pages.Languages
 
             return Page();
         }
-
-        //private bool LanguageExists(int id)
-        //{
-        //  return (_context.Languages?.Any(e => e.LanguageID == id)).GetValueOrDefault();
-        //}
     }
 }

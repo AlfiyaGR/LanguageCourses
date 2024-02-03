@@ -1,17 +1,38 @@
-﻿namespace LanguageCourses.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LanguageCourses.Models
 {
     public class Student
     {
-        public string StudentID { get; set; }
-        public string Surname { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string Level { get; set; }
-        public string Hobby { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public int StudentID { get; set; }
 
-        public ICollection<StudentCourse> Courses { get; set; }
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "Фамилия")]
+        public string Surname { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
+
+        [StringLength(100)]
+        [Display(Name = "Отчество")]
+        public string LastName { get; set; }
+
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Дата рождения")]
+        public DateTime BirthDate { get; set; }
+
+        [StringLength(30)]
+        [Display(Name = "Уровень")]
+        public string Level { get; set; }
+
+        [Display(Name = "Увлечения")]
+        public string Hobby { get; set; }
+
+        public ICollection<StudentCourse>? Courses { get; set; }
     }
 }

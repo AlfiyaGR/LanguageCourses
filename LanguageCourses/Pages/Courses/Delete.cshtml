@@ -1,0 +1,58 @@
+﻿@page
+@model LanguageCourses.Pages.Courses.DeleteModel
+
+@{
+    ViewData["Title"] = "Удалить";
+}
+
+<h1>Удаление</h1>
+
+<h3>Уверены, что нужно удалить?</h3>
+<div>
+    <h4>Курс</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Theme)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Theme)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.TrainingLevel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.TrainingLevel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Time)
+        </dd>
+        <dt class="col-sm-2">
+            Язык
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Language.Title)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Course.CourseID" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-page="./Index">Вернуться к списку</a>
+    </form>
+</div>

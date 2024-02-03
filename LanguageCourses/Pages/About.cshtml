@@ -1,0 +1,59 @@
+﻿@page
+@model LanguageCourses.Pages.AboutModel
+@{
+    ViewData["Title"] = "Статистика";
+}
+
+<h2>Количество курсов по языкам</h2>
+
+<table>
+    <tr>
+        <th>
+            Язык
+        </th>
+        <th></th>
+        <th>
+            Курс
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Languages)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LanguageTitle)
+            </td>
+            <td></td>
+            <td>
+                @item.CoursesCount
+            </td>
+        </tr>
+    }
+</table>
+
+<h2>Количество студентов по курсам</h2>
+
+<table>
+    <tr>
+        <th>
+            Курс
+        </th>
+        <th></th>
+        <th>
+            Студенты
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Students)
+    {
+            <tr>
+                <td>
+                @Html.DisplayFor(modelItem => item.CourseTitle)
+                </td>
+                <td></td>
+                <td>
+                @item.StudentsCount
+                </td>
+            </tr>
+    }
+</table>

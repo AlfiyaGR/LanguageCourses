@@ -2,13 +2,13 @@
 @model LanguageCourses.Pages.Languages.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Детали";
 }
 
-<h1>Details</h1>
+<h1>Детали</h1>
 
 <div>
-    <h4>Language</h4>
+    <h4>Язык</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -24,14 +24,14 @@
             @Html.DisplayFor(model => model.Language.Complexity)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Language.Courses)
+            Курсы
         </dt>
         <dd class="col-sm-10">
             <table class="table">
                 <tr>
-                    <th>Course Title</th>
-                    <th>Theme</th>
-                    <th>Price</th>
+                    <th>Курс</th>
+                    <th>Тема</th>
+                    <th>Цена</th>
                 </tr>
                 @foreach (var item in Model.Language.Courses)
                 {
@@ -52,6 +52,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Language?.LanguageID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Language?.LanguageID">Редактировать</a> |
+    <a asp-page="./Index">Вернуться к списку</a>
 </div>

@@ -1,0 +1,115 @@
+﻿@page
+@model LanguageCourses.Pages.Courses.DetailsModel
+
+@{
+    ViewData["Title"] = "Детали";
+}
+
+<h1>Детали</h1>
+
+<div>
+    <h4>Курс</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Theme)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Theme)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.TrainingLevel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.TrainingLevel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Time)
+        </dd>
+        <dt class="col-sm-2">
+            Язык
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Language.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Учителя
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Образование</th>
+                    <th>Преподает с</th>
+                </tr>
+                @foreach(var item in Model.Course.Teachers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Teacher.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Teacher.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Teacher.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Teacher.Education)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Teacher.DateStartTeaching)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt class="col-sm-2">
+            Студенты
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                </tr>
+                @foreach (var item in Model.Course.Students)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.LastName)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Course?.CourseID">Редактировать</a> |
+    <a asp-page="./Index">Вернуться к списку</a>
+</div>

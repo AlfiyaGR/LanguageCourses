@@ -1,0 +1,54 @@
+﻿@page
+@model LanguageCourses.Pages.Reviews.IndexModel
+
+@{
+    ViewData["Title"] = "Отзывы";
+}
+
+<h1>Отзывы</h1>
+
+<p>
+    <a asp-page="Create">Добавить отзыв</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Evaluation)
+            </th>
+            <th>
+                Курс
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Review) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evaluation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Title)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ReviewID">Редактировать</a> |
+                <a asp-page="./Details" asp-route-id="@item.ReviewID">Детали</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ReviewID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -12,9 +12,9 @@ namespace LanguageCourses.Pages.Languages
 {
     public class CreateModel : PageModel
     {
-        private readonly LanguageCourses.Data.LanguageContext _context;
+        private readonly LanguageContext _context;
 
-        public CreateModel(LanguageCourses.Data.LanguageContext context)
+        public CreateModel(LanguageContext context)
         {
             _context = context;
         }

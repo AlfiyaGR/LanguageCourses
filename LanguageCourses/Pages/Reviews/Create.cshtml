@@ -1,0 +1,52 @@
+﻿@page
+@model LanguageCourses.Pages.Reviews.CreateModel
+
+@{
+    ViewData["Title"] = "Добавить";
+}
+
+<h1>Создать</h1>
+
+<h4>Отзыв</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Review.Course" class="control-label">Курс</label>
+                <select asp-for="Review.CourseID" class="form-control"
+                        asp-items="@Model.CourseTitleSL">
+                    <option value="">-- Выбрать язык --</option>
+                </select>
+                <span asp-validation-for="Review.CourseID" class="text-danger" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Review.Author" class="control-label"></label>
+                <input asp-for="Review.Author" class="form-control" />
+                <span asp-validation-for="Review.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Review.Text" class="control-label"></label>
+                <input asp-for="Review.Text" class="form-control" />
+                <span asp-validation-for="Review.Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Review.Evaluation" class="control-label"></label>
+                <input asp-for="Review.Evaluation" class="form-control" />
+                <span asp-validation-for="Review.Evaluation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

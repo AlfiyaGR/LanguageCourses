@@ -1,0 +1,43 @@
+﻿@page
+@model LanguageCourses.Pages.Reviews.DetailsModel
+
+@{
+    ViewData["Title"] = "Детали";
+}
+
+<h1>Детали</h1>
+
+<div>
+    <h4>Отзыв</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Review.Author)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Review.Author)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Review.Text)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Review.Text)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Review.Evaluation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Review.Evaluation)
+        </dd>
+        <dt class="col-sm-2">
+            Курс
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Review.Course.Title)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Review?.ReviewID">Редактировать</a> |
+    <a asp-page="./Index">Вернуться к списку</a>
+</div>
